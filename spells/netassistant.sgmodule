@@ -1,0 +1,5 @@
+#!name=netAssistant
+#!desc=auto switching policy for ENV
+
+[Script]
+event network-changed script-path=https://raw.githubusercontent.com/Kosette/surfings/master/spells/scripts/netAssistant.js
