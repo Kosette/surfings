@@ -18,14 +18,17 @@ jobs:
           fetch-depth: 0
       - name: Fetch file from upstream
         run: |
-          rm spells/advertisinglite.sgmodule && curl -sSL https://github.com/blackmatrix7/ios_rule_script/raw/master/rewrite/Surge/AdvertisingLite/AdvertisingLite_Mock.sgmodule | sed -e "s/blackmatrix7/Kosette/g" -e "s/ios_rule_script/surfings/g" > spells/advertisinglite.sgmodule
+          rm -f spells/advertisinglite.sgmodule && curl -sSL https://github.com/blackmatrix7/ios_rule_script/raw/master/rewrite/Surge/AdvertisingLite/AdvertisingLite_Mock.sgmodule | sed -e "s/blackmatrix7/Kosette/g" -e "s/ios_rule_script/surfings/g" > spells/advertisinglite.sgmodule
+          rm -f lists/trackers.list && curl -sSL https://ruleset.skk.moe/List/domainset/reject.conf > lists/trackers.list
+          rm -f lists/cn-asn.list && curl -sSL "https://raw.githubusercontent.com/VirgilClyne/GetSomeFries/main/ruleset/ASN.China.list" | grep "^IP-ASN" | sort -t , -k 2n > lists/cn-asn.list
       - name: Push to Repository
         run: |
-          rm -rf .git
+          rm -rf .git*
           git init
           git config --local user.name "kosette"
           git config --local user.email "35268640+Kosette@users.noreply.github.com"
+          git checkout -b release
           git add -A
           git commit -m "add files"
           git remote add geoip "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
-          git push -f geoip master
+          git push -f geoip release
