@@ -1,12 +1,12 @@
-
+// 
 let config = {
-  global_direct: "DIRECT",
-  global_proxy: "PROXY",
+  global_direct: $argument.global_direct,
+  global_proxy: $argument.global_proxy,
   silence: true,  // 是否静默运行，默认false
   cellular: "RULE",  // 蜂窝数据下的模式，RULE代表规则模式，PROXY代表全局代理，DIRECT代表全局直连
   wifi: "RULE",  // wifi下默认的模式
-  all_direct: ["bifrost_hs"],  // 指定全局直连的wifi名字
-  all_proxy: [],  // 指定全局代理的wifi名字
+  all_direct: [$argument.wifi_direct],  // 指定全局直连的wifi名字
+  all_proxy: [$argument.wifi_proxy],  // 指定全局代理的wifi名字
   whitelist: ["REJECT"],  // 指定白名单策略
 };
 

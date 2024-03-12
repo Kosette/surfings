@@ -1,5 +1,9 @@
 #!name=netAssistant
-#!desc=update_time:2022-09-06;change policies after network switching
+#!desc=Automatically change policies after network switching
+#!category=Network
+#!date=2024-11-11
+#!arguments=wifi_direct:"",wifi_proxy:"",global_direct:"DIRECT",global_proxy:"PROXY"
+#!arguments-desc=- wifi_direct: 填写你需要全局直连的Wi-Fi名称\n- wifi_proxy: 填写你需要全局代理的Wi-Fi名称\n- global_direct: 填写你全局直连的策略名称，默认DIRECT\n- global_proxy: 填写你全局代理使用的策略名称，默认PROXY
 
 [Script]
-event network-changed script-path=https://raw.githubusercontent.com/Kosette/surfings/master/spells/scripts/netAssistant.js
+event network-changed script-path=https://raw.githubusercontent.com/Kosette/surfings/master/spells/scripts/netAssistant.js,argument=wifi_direct="{{{wifi_direct}}}"&wifi_proxy="{{{wifi_proxy}}}"&global_direct="{{{global_direct}}}"&global_proxy="{{{global_proxy}}}"
