@@ -1,0 +1,5 @@
+#!name=netAssistant
+#!desc=update_time:2022-09-06;change policies after network switching
+
+[Script]
+event network-changed script-path=https://raw.githubusercontent.com/Kosette/surfings/master/spells/scripts/netAssistant.js
