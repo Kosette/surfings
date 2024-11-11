@@ -1,5 +1,6 @@
 #!name=Wechat No Ads
 #!desc=Wechat app removes ads.
+#!category=Sanitizer
 #!system=ios
 
 [Script]
