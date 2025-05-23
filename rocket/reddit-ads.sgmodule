@@ -1,0 +1,10 @@
+#!name = Reddit去广告
+#!desc = 过滤应用内推广，阻止NSFW提示。
+#!author = xream
+#!date = 2024-01-28 16:25:19
+
+[Script]
+reddit = type=http-response,pattern=^https?:\/\/gql(-fed)?\.reddit\.com,script-path=https://raw.githubusercontent.com/Kosette/surfings/release/rocket/scripts/reddit-ads.js,requires-body=1
+
+[MITM]
+hostname = %APPEND% gql.reddit.com, gql-fed.reddit.com

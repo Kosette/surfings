@@ -1,0 +1,10 @@
+#!name=Wechat No Ads
+#!desc=Wechat app removes ads.
+#!category=Sanitizer
+#!system=ios
+
+[Script]
+http-response ^https://mp\.weixin\.qq\.com/mp/getappmsgad\? requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Kosette/surfings/master/spells/scripts/wechat_pub.js
+
+[MITM]
+hostname = %APPEND% mp.weixin.qq.com
