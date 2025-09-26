@@ -1,0 +1,111 @@
+port: 7890
+socks-port: 7891
+redir-port: 7892
+allow-lan: true
+mode: Rule
+log-level: error
+external-controller: 127.0.0.1:9090
+secret: ""
+ignore-resolve-fail: true
+interface-name: eth0
+
+dns:
+  enable: true
+  ipv6: false
+  listen: 0.0.0.0:65
+  enhanced-mode: redir-host
+  default-nameserver: 
+    - 119.29.29.29
+    - 1.1.1.1
+  nameserver:
+    - https://dns.pub/dns-query
+    - 119.29.29.29
+    - 1.1.1.1
+  fallback: 
+    - https://cloudflare-dns.com/dns-query
+    - tls://dns.rubyfish.cn:853
+
+proxies:
+  - name: ""
+    type: vmess
+    server: ""
+    port: 
+    uuid: 
+    alterId: 
+    cipher: 
+    udp: true
+    tls: true
+    network: ws
+
+  - name: ""
+    type: ss
+    server: 
+    port: 
+    cipher: 
+    password: ""
+    udp: true
+    plugin: v2ray-plugin
+    plugin-opts:
+      mode: websocket
+      udp: true
+      tls: true
+      host: 
+
+proxy-groups:
+  - name: ""
+    type: select
+    proxies:
+      - DIRECT
+  - name: ""
+    type: fallback
+    proxies:
+      - DIRECT
+    url: ""
+    interval: 
+      
+rule-prviders: 
+  domain: 
+    type: file
+    behavior: domain
+    path: ""
+  ip:
+    type: http
+    behavior: ipcidr
+    path: ""
+    url: 
+    interval: 
+
+rules:
+  # reject links
+  - DOMAIN-SUFFIX,appcenter.com,REJECT
+  - DOMAIN-SUFFIX,appcenter.ms,REJECT
+  - DOMAIN-SUFFIX,bugly.qq.com,REJECT
+  - DOMAIN-SUFFIX,crashlytics.com,REJECT
+  - DOMAIN-SUFFIX,doubleclick.net,REJECT
+  - DOMAIN-SUFFIX,firebase.google.com,REJECT
+  - DOMAIN-SUFFIX,firebaseio.com,REJECT
+  - DOMAIN-SUFFIX,flurry.com,REJECT
+  - DOMAIN-SUFFIX,google-analytics.com,REJECT
+  - DOMAIN-SUFFIX,mob.com,REJECT
+  - DOMAIN-SUFFIX,umeng.com,REJECT
+  # direct links
+  - DOMAIN-SUFFIX,akamaized.net,DIRECT
+  - DOMAIN-SUFFIX,akamaihd.net",DIRECT
+  - DOMAIN-SUFFIX,maxmind.com,DIRECT
+  - DOMAIN-SUFFIX,msauth.net,DIRECT
+  - DOMAIN-SUFFIX,paypal.com,DIRECT
+  # proxy links
+  - DOMAIN-SUFFIX,dropbox.com,Proxy
+  - DOMAIN-SUFFIX,gitbook.com,Proxy
+  - DOMAIN-SUFFIX,github.com,Proxy
+  - DOMAIN-SUFFIX,google.com,Proxy
+  - DOMAIN-SUFFIX,s3.amazonaws.com,Proxy
+  - DOMAIN-SUFFIX,ubuntu.com,Proxy
+  - DOMAIN-SUFFIX,wikipedia.org,Proxy
+  - DOMAIN-SUFFIX,youtube.com,Proxy
+  - DOMAIN-SUFFIX,ytimg.com,Proxy
+  # others
+  - DOMAIN-KEYWORD,-cn,DIRECT
+  - DOMAIN-SUFFIX,cn,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,Proxy

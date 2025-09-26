@@ -1,0 +1,5 @@
+#!name=adBlockers
+#!desc=try to filter some annoying ads
+
+[Rule]
+DOMAIN-SET,https://raw.githubusercontent.com/Kosette/Modusa/master/surge/snippets/block.txt,REJECT
