@@ -1,0 +1,30 @@
+#!name=高德地图去广告
+#!desc=高德地图去广告
+#!system=ios
+
+
+[URL Rewrite]
+^https?:\/\/.*\.amap\.com\/ws\/asa\/ads_attribution - reject
+
+[Map Local]
+^https?:\/\/.*\.amap\.com\/ws\/boss\/order_web\/\w{8}_information data="https://raw.githubusercontent.com/kosette/surfings/release/blank/blank.txt"
+^https?:\/\/.*\.amap\.com\/ws\/shield\/scene\/recommend data="https://raw.githubusercontent.com/kosette/surfings/release/blank/blank_dict.json"
+^https?:\/\/.*\.amap\.com\/uploadimg\/\w+\.gif data="https://raw.githubusercontent.com/kosette/surfings/release/blank/blank.gif"
+^https?:\/\/.*\.amap\.com\/ws\/valueadded\/weather data="https://raw.githubusercontent.com/kosette/surfings/release/blank/blank_dict.json"
+
+[Script]
+
+高德地图去广告=type=http-response,pattern=^https?:\/\/.*\.amap\.com\/ws\/faas\/amap-navigation\/main-page,requires-body=1,script-path=https://raw.githubusercontent.com/Kosette/surfings/release/spells/scripts/amap.js
+
+高德地图去广告1=type=http-response,pattern=^https?:\/\/.*\.amap\.com\/ws\/valueadded\/alimama\/splash_screen,requires-body=1,script-path=https://raw.githubusercontent.com/Kosette/surfings/release/spells/scripts/amap.js
+
+高德地图去广告2=type=http-response,pattern=^https?:\/\/.*\.amap\.com\/ws\/msgbox\/pull,requires-body=1,script-path=https://raw.githubusercontent.com/Kosette/surfings/release/spells/scripts/amap.js
+
+高德地图去广告3=type=http-response,pattern=^https?:\/\/.*\.amap\.com\/ws\/shield\/dsp\/profile\/index\/nodefaas,requires-body=1,script-path=https://raw.githubusercontent.com/Kosette/surfings/release/spells/scripts/amap.js
+
+高德地图去广告4=type=http-response,pattern=^https?:\/\/.*\.amap\.com\/ws\/shield\/search\/new_hotword,requires-body=1,script-path=https://raw.githubusercontent.com/Kosette/surfings/release/spells/scripts/amap.js
+
+
+[MITM]
+hostname = %APPEND% *.amap.com
+
